@@ -1,3 +1,13 @@
+## Thesis Areas
+1. Blockchain-Backed Audit Trails for Multi-Agent Medical AI: Study the design of an immutable logging system for collaborative diagnostics. For example, develop a model where every agent’s input, decision, and retrieved knowledge is recorded on a permissioned blockchain. Research could formalize what events to log and how to structure smart contracts to manage log integrity and access. This ensures traceability and non-repudiation of agent actions. The thesis might analyze trade-offs (e.g. latency, storage) and propose consensus mechanisms suited to healthcare settings. Such work directly addresses auditability and regulatory compliance – making the system HIPAA-audit-ready – while exploring how a distributed ledger can safeguard patient data and diagnostic provenance.
+
+
+2. Causal/Counterfactual Reasoning in Modular Diagnostic Agents: Develop a formal framework that augments MAM’s dialogue with causal inference. For example, introduce an agent or module dedicated to generating counterfactual scenarios (e.g. “If symptom X were absent, how would the diagnosis change?”) and integrate its reasoning into the group consensus. The thesis could build on counterfactual diagnosis literature to define algorithms enabling LLM-based agents to perform intervention-style reasoning. It might also explore knowledge representation (e.g. causal graphs of disease-symptom links) that agents can query. Incorporating blockchain here could ensure data provenance: e.g., critical reasoning steps or clinical data references used in causal analysis could be timestamped on-chain, enhancing trust in the diagnostic trail (combining trust in data with trust in diagnosis).
+
+4. Dynamic Agent Onboarding via Smart Contracts: Investigate a modular architecture that allows new specialist agents to join the MAM network at runtime. The thesis could define protocols (possibly mediated by smart contracts) for vetting and integrating new agent roles. For example, when a new AI module for a novel medical specialty is developed, it could register its interface and capabilities on a blockchain-based registry. Other agents would then discover and interact with it through defined API schemas. This research would be largely theoretical, addressing questions of interoperability, security (ensuring untrusted agents can be sandboxed), and role hierarchies. Blockchain adds value by enabling decentralized certification of agents – guaranteeing that an added module meets regulatory standards before it participates in diagnosis.
+
+
+
 ## Remaining todo
 Step 1 — Fill in Google Search API credentials
 Open Google_Search_API_Wrapper/.env and replace the placeholders:
