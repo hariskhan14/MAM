@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"e:\\\\Haris\\\\Git\\\\MAM\\\\__pycache__\")",
+      "Bash(cmd /c \"dir e:\\\\Haris\\\\Git\\\\MAM\\\\__pycache__\")"
+    ]
+  }
+}
