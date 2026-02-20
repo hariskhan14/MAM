@@ -4,7 +4,7 @@ import torch
 torch.manual_seed(1234)
 
 class AudioChatbot():
-    def __init__(self, cache_path='/your/cache/path', device="cuda"):
+    def __init__(self, cache_path=None, device="cuda"):
         self.cache_path = cache_path
         self.device = device
     def chat(self, audio: str, text: str):

@@ -1,0 +1,54 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[preprint]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tablefootnote}
+\usepackage{hyperref}
+\tcbuselibrary{breakable} 
+\usepackage{pifont}
+\usepackage{amsmath} % For mathematical symbols and environments
+\usepackage{amssymb} % For more mathematical symbols
+\usepackage{amsfonts} % For even more mathematical symbols
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\definecolor{myblue}{RGB}{150, 150, 230}
+\input{math_commands}
+\DeclareMathOperator*{\llm}{LLM}
+
+
+\title{
+MAM: Modular Multi-Agent Framework for Multi-Modal Medical Diagnosis via Role-Specialized Collaboration
+}
+
+\author{
+Yucheng Zhou, 
+Lingran Song, 
+Jianbing Shen\thanks{~Corresponding author. This work was supported by the National Natural Science Foundation of China (No. 624B2002) and the Jiangyin Hi-tech Industrial Development Zone under the Taihu Innovation Scheme (EF2025-00003-SKL-IOTSC).}\\
+SKL-IOTSC, CIS, University of Macau \\
+{\tt yucheng.zhou@connect.um.edu.mo, jianbingshen@um.edu.mo}
+}
+
+\begin{document}
+\maketitle
+
+\input{main}
+
+\end{document}

@@ -1,11 +1,19 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 class MedicalAssistant:
-    def __init__(self, model_name="sethuiyer/Medichat-Llama3-8B", device="cuda"):
-        self.device = device
+    def __init__(self, model_name="sethuiyer/Medichat-Llama3-8B"):
+        self.device = "cuda"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForCausalLM.from_pretrained(model_name).to(self.device)
+        quant_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+        )
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            quantization_config=quant_config,
+            device_map="auto",
+        )
         self.sys_message = ''' 
         You are an AI Medical Assistant trained on a vast dataset of health information. Please be thorough and
         provide an informative answer. If you don't know the answer to a specific medical inquiry, advise seeking professional help.
@@ -27,7 +35,8 @@ class MedicalAssistant:
 
     def generate_response(self, question, sys_message=None, max_new_tokens=512):
         prompt = self.format_prompt(question, sys_message)
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+        input_device = next(self.model.parameters()).device
+        inputs = self.tokenizer(prompt, return_tensors="pt").to(input_device)
         with torch.no_grad():
             outputs = self.model.generate(**inputs, max_new_tokens=max_new_tokens, use_cache=True)
         answer = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)[0].strip()

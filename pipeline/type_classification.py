@@ -8,9 +8,8 @@ from model.video_model import VideoLLaMAChatbot
 from model.audio_model import AudioChatbot
 
 def type_classification(modality, ques, file_name):
-    data_file='2406_data_example'
     if modality=='image':
-        image_paths = [os.path.join(data_file,file_name)]
+        image_paths = [file_name]
         bot = HuatuoChatbot()
         query = 'Please answer with a single word: What kind of medical image is this? X-Ray, CT, MRI, Pathology, Biomedical'
         output = bot.chat(images=image_paths, text=query)
@@ -21,12 +20,12 @@ def type_classification(modality, ques, file_name):
         return output
     elif modality=='audio':
         bot = AudioChatbot()
-        audio_paths = os.path.join(data_file,file_name)
+        audio_paths = file_name
         query = 'Please answer with a single word: What kind of audio is this? Cardiovascular, Respiratory'
         output = bot.chat(audio=audio_paths,text=query)
         return output
     elif modality=='video':
-        video_paths = [os.path.join(data_file, file_name)]
+        video_paths = [file_name]
         bot = VideoLLaMAChatbot()
         query = 'Please answer with a single word: What kind of video is this? Sports, Rehabilitation, Emergency'
         output = bot.chat(paths=video_paths, text=query, modal_type='video')

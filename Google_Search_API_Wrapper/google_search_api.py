@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 from typing import List, Dict, Optional
 import logging
-dotenv_path = '/your/path/to/example.env'
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 class SearchResults:
@@ -25,7 +25,7 @@ class SearchResults:
 
 class GoogleSearchAPI:
     def __init__(self):
-        self.base_url = ""
+        self.base_url = "https://www.googleapis.com/customsearch/v1"
         self.headers = {"Content-Type": "application/json"}
 
         self.api_key = os.getenv('api_key')
